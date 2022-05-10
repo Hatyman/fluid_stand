@@ -1,21 +1,13 @@
 import React, { FC } from 'react';
 import { Outlet } from 'react-router-dom';
+import logo from 'assets/logo.png';
+import s from './MainLayout.module.sass';
 
 export const MainLayout: FC = function MainLayout() {
   return (
-    <article className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <article>
+      <header className={s.header}>
+        <img src={logo} alt={'TPU logo'} className={s.logo} draggable={false} />
       </header>
       <Outlet />
     </article>
