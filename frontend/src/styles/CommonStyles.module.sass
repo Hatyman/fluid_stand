@@ -1,0 +1,38 @@
+@use 'vars'
+@use 'mixines'
+
+.thinText
+  @include mixines.FontThin
+  font-size: 2.4rem
+  line-height: 2.8rem
+  color: vars.$dark
+
+.boldText
+  @include mixines.FontBold
+  font-size: 2.4rem
+  line-height: 2.8rem
+  color: vars.$dark
+
+.regularText
+  @include mixines.FontRegular
+  font-size: 2.4rem
+  line-height: 2.8rem
+  color: vars.$dark
+
+.loading
+  &-container
+    display: flex
+    align-items: center
+    justify-content: center
+    height: 100%
+    width: 100%
+
+.textarea
+  resize: vertical
+
+.paragraph
+  margin: 0
+
+.italic
+  font-style: italic
+

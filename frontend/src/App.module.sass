@@ -1,0 +1,25 @@
+@use 'styles/vars'
+@use 'styles/mixines'
+
+html
+  @include mixines.AdaptiveFont(10, 1.85)
+  @include mixines.smartphone
+    font-size: 10px
+*
+  font-family: 'Roboto', sans-serif
+  box-sizing: border-box
+  input:focus, textarea:focus, button:focus
+    outline-color: vars.$green
+
+body
+  background-color: vars.$background
+  overflow-x: hidden
+  // add negative margin (scrollbar width). Content remain on its position when scrollbar appears
+  margin: 0 calc(-1 * (100vw - 100%)) 0 0
+  position: relative
+
+a
+  transition: color vars.$animDuration ease
+  text-decoration: none
+  &:hover
+    text-decoration: none

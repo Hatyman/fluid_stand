@@ -1,0 +1,11 @@
+src/api/araneo
+src/api/user-api
+node_modules
+.idea
+.vscode
+assets
+public
+deploy
+codestyle
+e2e
+scripts

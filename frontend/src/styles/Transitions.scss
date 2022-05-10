@@ -1,0 +1,54 @@
+.fade-enter {
+  opacity: 1;
+  z-index: 1;
+  transition: opacity .25s ease-in-out;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 0;
+  transition: opacity .25s ease-in-out;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.fade-enter-done {
+  position: relative;
+}
+
+.fade-exit {
+  opacity: 0;
+  z-index: 2;
+  transition: opacity .25s ease-in-out;
+}
+
+.fade-exit.fade-exit-active {
+  opacity: 1;
+  transition: opacity .25s ease-in-out;
+}
+
+.fade-inner-enter {
+  opacity: 0;
+  z-index: 1;
+  transition: opacity .25s ease-in-out;
+}
+
+.fade-inner-enter.fade-inner-enter-active {
+  opacity: 1;
+  transition: opacity .25s ease-in-out;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.fade-inner-enter-done {
+  position: relative;
+}
+
+.fade-inner-exit {
+  z-index: 2;
+  opacity: 0;
+  transition: opacity .25s ease-in-out;
+}

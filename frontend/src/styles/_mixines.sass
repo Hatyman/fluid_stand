@@ -1,0 +1,60 @@
+@use "vars"
+
+@mixin colorHoverColor($color, $percents: 15%, $type: 'light')
+  color: $color
+  &:hover
+    @if $type == 'dark'
+      color: darken($color, $percents)
+    @else
+      color: lighten($color, $percents)
+
+@mixin FontThin
+  font-family: 'Roboto', sans-serif
+  font-weight: 300
+  font-style: normal
+
+@mixin FontBold
+  font-family: 'Roboto', sans-serif
+  font-weight: bold
+  font-style: normal
+
+@mixin FontRegular
+  font-family: 'Roboto', sans-serif
+  font-weight: 400
+  font-style: normal
+
+@mixin AdaptiveFont($fontSize, $minFontSize)
+  $diffSize: $fontSize - $minFontSize
+  $baselineWidth: vars.$baselineWidth
+  font-size: calc(#{$minFontSize + px} + #{$diffSize} * ((100vw - 320px) / #{$baselineWidth}) * (#{$baselineWidth} / (#{$baselineWidth} - 320)))
+
+@mixin BorderFull($color: vars.$green, $width: .5rem, $lightenPercents: 10%)
+  border: $width solid $color
+  transition: border-color vars.$animDuration ease
+  &:hover
+    border-color: lighten($color, $lightenPercents)
+
+@mixin BorderBottom($color: vars.$dark, $width: .2rem)
+  border: none
+  border-bottom: $width solid $color
+  transition: border-bottom-color vars.$animDuration ease
+
+  &:focus
+    outline: none
+    border-bottom-color: lighten($color, 20%)
+
+  &:hover
+    border-bottom-color: lighten($color, 10%)
+
+@mixin hideScrollBar()
+  /* хром, сафари */
+  &::-webkit-scrollbar
+    width: 0
+  /* ie 10+ */
+  -ms-overflow-style: none
+  /* фф (свойство больше не работает, других способов тоже нет)*/
+  //overflow: -moz-scrollbars-none
+
+@mixin smartphone
+  @media screen and (max-width: 780px)
+    @content
