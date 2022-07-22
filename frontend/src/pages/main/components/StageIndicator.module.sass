@@ -1,0 +1,26 @@
+@use "src/styles/vars"
+
+$size: 3rem
+
+.indicator
+  border-radius: $size / 2
+  width: $size
+  height: $size
+  position: relative
+  transition: background-color vars.$animDuration ease
+  background-color: vars.$grey
+
+  &:not(:first-child)::before
+    content: ''
+    display: block
+    position: absolute
+    top: 50%
+    right: 100%
+    height: .2rem
+    width: $size * 3.3
+    transform: translate(-1rem, -50%)
+    transition: inherit
+    background-color: inherit
+
+.active
+  background-color: vars.$green
