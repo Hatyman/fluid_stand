@@ -1,11 +1,12 @@
 .container
-  display: flex
+  display: grid
   column-gap: 12rem
   row-gap: 2.4rem
-  flex-wrap: wrap
+  grid-template-columns: repeat(3, min-content)
+  grid-template-rows: repeat(2, auto)
 
 .description
-  flex-basis: 100%
+  grid-column: 1 / span 3
   font-size: 1.8rem
   margin: 0
 

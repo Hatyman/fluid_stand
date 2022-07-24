@@ -1,13 +1,17 @@
 import React, { FC } from 'react';
 import { ProcessState } from 'pages/main/components/ProcessState';
 import s from './MainPage.module.sass';
+import { DecisionProposer } from './components/DecisionProposer';
+import { Export } from './components/Export';
 
 export const MainPage: FC = function MainPage() {
   return (
     <section className={s.content}>
-      <div className={s.topContainer}>
+      <aside className={s.topContainer}>
         <ProcessState />
-      </div>
+        <DecisionProposer />
+        <Export />
+      </aside>
     </section>
   );
 };
