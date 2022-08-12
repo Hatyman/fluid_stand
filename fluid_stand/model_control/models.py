@@ -18,7 +18,7 @@ class Session(models.Model):
     finished_at = models.DateTimeField(null=True)
 
     def __str__(self):
-        return self.session_id
+        return str(self.session_id)
 
     def get_absolute_url(self):
         return reverse('session-detail', args=[str(self.session_id)])
@@ -39,7 +39,7 @@ class Operation(models.Model):
     session = models.ForeignKey(Session, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.operation_id
+        return str(self.operation_id)
 
     def get_absolute_url(self):
         return reverse('operation-detail', args=[str(self.operation_id)])
