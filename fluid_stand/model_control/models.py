@@ -1,13 +1,15 @@
 from django.db import models
 from django.urls import reverse
+import uuid
+import datetime
+import json
 
 
 # Create your models here.
 
 class Session(models.Model):
     session_id = models.UUIDField(primary_key=True,
-                                  unique=True,
-                                  db_index=True)
+                                  unique=True)
 
     started_at = models.DateTimeField()
 
@@ -23,23 +25,36 @@ class Session(models.Model):
     def get_absolute_url(self):
         return reverse('session-detail', args=[str(self.session_id)])
 
+    @classmethod
+    def get(self, id: uuid.UUID):
+        return Session.objects.get(pk=id)
 
-class Operation(models.Model):
-    operation_id = models.UUIDField(primary_key=True,
-                                    unique=True,
-                                    db_index=True)
-    started_at = models.DateTimeField()
+    @classmethod
+    def create_empty_session(cls):
+        cls.session_id = uuid.uuid4()
+        cls.started_at = datetime.date.today()
+        return cls
+
+
+class Telemetry(models.Model):
+    telemetry_id = models.UUIDField(primary_key=True,
+                                    unique=True)
+    measured_at = models.DateTimeField()
 
     efficiency = models.FloatField(null=True)
     distribution_efficiency = models.FloatField(null=True)
     quality = models.FloatField(null=True)
 
-    finished_at = models.DateTimeField(null=True)
-
     session = models.ForeignKey(Session, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return str(self.operation_id)
+    def to_json(self):
+        return json.dumps(self, default=lambda o: o.__dict__,
+            sort_keys=True, indent=4)
+
+    def __repr__(self):
+        return self.__str__()
 
     def get_absolute_url(self):
-        return reverse('operation-detail', args=[str(self.operation_id)])
+        return reverse('operation-detail', args=[str(self.telemetry_id)])
+
+

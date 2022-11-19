@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Session, Operation
+from .models import Session, Telemetry
 
 
 # Register your models here.
@@ -15,7 +15,9 @@ class SessionAdmin(admin.ModelAdmin):
 admin.site.register(Session, SessionAdmin)
 
 
-@admin.register(Operation)
-class OperationAdmin(admin.ModelAdmin):
-    list_display = ('operation_id',)
+class TelemetryAdmin(admin.ModelAdmin):
+    list_display = ('telemetry_id',)
+
+admin.site.register(Telemetry, TelemetryAdmin)
+
 
