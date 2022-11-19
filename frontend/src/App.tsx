@@ -2,16 +2,19 @@ import React, { Suspense } from 'react';
 import './App.module.sass';
 import { StyledEngineProvider, ThemeProvider } from '@mui/material/styles';
 import { theme } from 'styles/muiTheme';
-import { QueryClient, QueryClientProvider } from 'react-query';
 import { AppRouter } from 'navigation/AppRouter';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import axios from 'axios';
+import { setAxiosFactory, setBaseUrl } from './services/api/axios-client';
 
-// QueryFactory.setAxiosFactory(() => axios);
+setBaseUrl('http://192.168.43.213:64345');
+setAxiosFactory(() => axios);
 
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       refetchOnWindowFocus: false,
-      useErrorBoundary: true,
+      useErrorBoundary: false,
       suspense: false,
     },
   },
