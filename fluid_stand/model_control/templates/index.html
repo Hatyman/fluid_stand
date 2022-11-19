@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Model Control Home</h1>
+
+  <p>Welcome to <em>ModelControl</em>, a very basic Django website developed as a tutorial example on the Mozilla Developer Network.</p>
+
+<h2>Dynamic content</h2>
+
+  <p>The database has the following record counts:</p>
+  <ul>
+    <li><strong>Sessions:</strong> {{ num_session }}</li>
+    <li><strong>Operations:</strong> {{ num_operation }}</li>
+  </ul>
+
+{% endblock %}
+
+{% load static %}
