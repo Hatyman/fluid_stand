@@ -16,12 +16,14 @@
     "react-dom": "18.2.0",
     "react-router-dom": "6.3.0",
     "sass": "1.54.0",
-    "web-vitals": "2.1.4"
+    "web-vitals": "2.1.4",
+    "websocket": "1.0.34"
   },
   "devDependencies": {
     "@types/node": "17.0.45",
     "@types/react": "18.0.15",
     "@types/react-dom": "18.0.6",
+    "@types/websocket": "1.0.5",
     "@typescript-eslint/eslint-plugin": "^5.23.0",
     "@typescript-eslint/parser": "^5.23.0",
     "eslint": "^8.15.0",
@@ -36,7 +38,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "generate-api-client-axios": "yarn react-query-swagger /tanstack /input:http://192.168.43.213:64345/swagger.json /output:src/services/api/axios-client.ts /template:Axios /serviceHost:. /use-recommended-configuration\n"
+    "generate-api-client-axios": "yarn react-query-swagger /tanstack /input:http://192.168.101.46:40001/swagger.json /output:src/services/api/axios-client.ts /template:Axios /serviceHost:. /use-recommended-configuration\n"
   },
   "eslintConfig": {
     "extends": [

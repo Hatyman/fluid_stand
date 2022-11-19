@@ -5,9 +5,16 @@ import { theme } from 'styles/muiTheme';
 import { AppRouter } from 'navigation/AppRouter';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import axios from 'axios';
-import { setAxiosFactory, setBaseUrl } from './services/api/axios-client';
+import {
+  setAxiosFactory,
+  setBaseUrl,
+  Telemetry,
+  TelemetryClient,
+} from './services/api/axios-client';
+import { isDev } from 'utils/constants';
+import { WebSocketsProvider } from 'services/ws/WebSocketsContext';
 
-setBaseUrl('http://192.168.43.213:64345');
+setBaseUrl(`${isDev ? 'http://192.168.101.46:40001' : ''}/api`);
 setAxiosFactory(() => axios);
 
 const queryClient = new QueryClient({
@@ -25,9 +32,11 @@ function App() {
     <StyledEngineProvider injectFirst={true}>
       <ThemeProvider theme={theme}>
         <QueryClientProvider client={queryClient}>
-          <Suspense>
-            <AppRouter />
-          </Suspense>
+          <WebSocketsProvider>
+            <Suspense>
+              <AppRouter />
+            </Suspense>
+          </WebSocketsProvider>
         </QueryClientProvider>
       </ThemeProvider>
     </StyledEngineProvider>
